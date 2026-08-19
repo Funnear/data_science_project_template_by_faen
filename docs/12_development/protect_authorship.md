@@ -348,7 +348,87 @@ Official instructions:
 
 Do not publish the GPG private key.
 
-## 4. Add Citation Metadata
+## 4. Sign Off Commits with a DCO
+
+The Developer Certificate of Origin (DCO) is a lightweight declaration that a contributor
+wrote, or otherwise has the right to submit, the contribution under the project's license. A
+contributor affirms it per-commit by adding a `Signed-off-by` trailer to the commit message.
+It is not a cryptographic signature.
+
+DCO text:
+
+<https://developercertificate.org/>
+
+**Rule:** every commit submitted to the project must contain a DCO `Signed-off-by` trailer.
+
+### Sign Off a Commit
+
+Add the trailer with `-s` (or `--signoff`):
+
+```bash
+git commit -s -m "Add classifier evaluation"
+```
+
+Git derives the trailer from `user.name` and `user.email`.
+
+### Combine DCO Sign-Off with SSH Signing
+
+A DCO sign-off and an SSH or GPG commit signature are independent mechanisms. `-s` alone
+should be sufficient together with automatic commit signing (see
+[Configure Git to Sign Commits with SSH](#configure-git-to-sign-commits-with-ssh)), since Git
+then signs every commit while `-s` adds the sign-off trailer.
+
+If a commit is not signed automatically, request both explicitly:
+
+```bash
+git commit -s -S -m "Add classifier evaluation"
+```
+
+`-s` adds the `Signed-off-by` trailer; `-S` requests the cryptographic signature.
+
+### Verify a DCO Sign-Off
+
+Inspect the sign-off trailer:
+
+```bash
+git show --format=full HEAD
+```
+
+```text
+commit 0123456789abcdef
+Author: Jane Doe <jane@example.com>
+Commit: Jane Doe <jane@example.com>
+
+    Add classifier evaluation
+
+    Signed-off-by: Jane Doe <jane@example.com>
+```
+
+Inspect the cryptographic signature separately:
+
+```bash
+git cat-file commit HEAD
+```
+
+### DCO Enforcement
+
+DCO sign-off is enforced on pull requests across this group of projects. A pull request
+containing a commit without a `Signed-off-by` trailer fails the DCO check and cannot be
+merged.
+
+### Fix a Missing Sign-Off
+
+For the most recent commit:
+
+```bash
+git commit --amend --signoff --no-edit
+git push --force-with-lease
+```
+
+For multiple commits missing DCO sign-offs, interactive rebase can amend each affected
+commit. The exact procedure depends on whether those commits have already been shared.
+
+## 5. Add Citation Metadata
 
 Repositories intended to produce citable software should contain a `CITATION.cff` file in the
 repository root.
@@ -382,7 +462,7 @@ GitHub citation documentation:
 
 <https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files>
 
-## 5. Prepare a Project for Zenodo
+## 6. Prepare a Project for Zenodo
 
 Zenodo can archive software repositories and assign persistent Digital Object Identifiers
 \(DOIs\) to releases.
@@ -406,7 +486,7 @@ records rather than represented as one indistinguishable artifact.
 A Python, npm, Maven, NuGet, or other package-registry publication is not required merely to
 obtain a Zenodo software DOI. The relevant unit is a versioned software release.
 
-## 6. Archive Releases with Zenodo
+## 7. Archive Releases with Zenodo
 
 Connect your ORCID and GitHub accounts to Zenodo:
 
@@ -437,7 +517,7 @@ papers, datasets, documentation, presentations, and derivative research outputs.
 Do not treat the DOI as a replacement for Git history. The DOI identifies the released
 artifact; signed commits preserve provenance at the individual Git-object level.
 
-## 7. Record AI and ML Artifacts
+## 8. Record AI and ML Artifacts
 
 For projects that publish models or datasets separately from the source-code release,
 maintain artifact-specific documentation.
@@ -459,7 +539,7 @@ If the project later produces an arXiv paper, JOSS paper, conference paper, data
 publication, or other scholarly output, include contributor ORCID iDs in the publication
 workflow where supported.
 
-## 8. Contributor Checklist
+## 9. Contributor Checklist
 
 - [ ] Register an ORCID iD and verify the associated email address.
 - [ ] Connect the ORCID iD to GitHub.
@@ -480,6 +560,10 @@ workflow where supported.
 - [ ] Never publish or commit private signing keys.
 - [ ] Create a signed commit and verify that it contains a signature.
 - [ ] Verify that the pushed commit displays **Verified** on GitHub.
+- [ ] Add a DCO `Signed-off-by` trailer to every commit using `git commit -s`.
+- [ ] If a commit is not signed automatically, use `git commit -s -S` to add both the
+      sign-off trailer and the cryptographic signature.
+- [ ] Fix any commit missing a DCO sign-off before opening or updating a pull request.
 - [ ] Add the contributor and ORCID iD to `CITATION.cff` when the contributor qualifies for
       project authorship.
 - [ ] Record other material contributions using the project's contributor metadata policy.
@@ -492,16 +576,18 @@ workflow where supported.
 - [ ] Document separately published ML models and datasets using the metadata mechanisms
       provided by their hosting platform.
 
-## 9. Result
+## 10. Result
 
 After completing this setup, a contributor has a persistent ORCID identity, an authenticated
 link between ORCID and GitHub, SSH-authenticated repository access where configured,
-cryptographically signed Git contributions, machine-readable project citation metadata, and a
-path to DOI-backed software releases.
+cryptographically signed and DCO-signed-off Git contributions, machine-readable project
+citation metadata, and a path to DOI-backed software releases.
 
 These mechanisms address different attribution layers rather than replacing one another.
 ORCID identifies the contributor across projects and institutions; SSH authentication
 establishes access to GitHub repositories; signed commits establish cryptographic provenance;
-`CITATION.cff` records project-level authorship and citation metadata; and DOI-backed releases
-create persistent, citable research artifacts suitable for software papers, academic
-publications, datasets, model releases, funding records, and long-term OSS attribution.
+the DCO `Signed-off-by` trailer, enforced on pull requests, certifies the contributor's right
+to submit each commit under the project's license; `CITATION.cff` records project-level
+authorship and citation metadata; and DOI-backed releases create persistent, citable research
+artifacts suitable for software papers, academic publications, datasets, model releases,
+funding records, and long-term OSS attribution.

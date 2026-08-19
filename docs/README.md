@@ -32,6 +32,8 @@ It covers preconditions, cloning, running `make setup`, and activating the envir
   error handling conventions.
 * [documentation_guidelines.md](12_development/documentation_guidelines.md) — how to write
   docs in this repo.
+* [protect_authorship.md](12_development/protect_authorship.md) — ORCID identity, commit
+  signing (SSH/GPG), CITATION.cff, and Zenodo DOI archiving for contributors.
 * [submodules.md](12_development/submodules.md) — adding/updating/removing git submodules.
 * [uml_diagrams.md](12_development/uml_diagrams.md) — authoring and rendering Mermaid diagrams.
 
@@ -90,6 +92,7 @@ The following files were added (A) or deleted (D) on this branch:
 <paste output of the git command above>
 
 Using docs/README.md as the current documentation index and structure overview:
+0. Strictly follow the markdown lint rules.
 1. For each added file under docs/, add a linked entry with a one-line purpose,
    under the correct "### <folder>" section (create the section if the folder is new).
 2. For each deleted file under docs/, remove its entry.

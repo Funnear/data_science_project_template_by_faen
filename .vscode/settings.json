@@ -81,9 +81,8 @@
   "accessibility.verboseChatProgressUpdates": false,
   "chat.implicitContext.suggestedContext": false,
   "chat.math.enabled": false,
-  "chat.notifyWindowOnResponseReceived": false,
-  "chat.notifyWindowOnConfirmation": false,
-  "chat.sendElementsToChat.attachImages": false,
+  "chat.notifyWindowOnResponseReceived": "off",
+  "chat.notifyWindowOnConfirmation": "off",
   "chat.sendElementsToChat.attachCSS": false,
   "chat.sendElementsToChat.enabled": false,
   "chat.showAgentSessionsViewDescription": false,
@@ -113,5 +112,6 @@
   "github.copilot.chat.useResponsesApi": false,
   "github.copilot.chat.useProjectTemplates": false,
   "githubPullRequests.experimental.chat": false,
-  "notebook.experimental.generate": false
+  "notebook.experimental.generate": false,
+  "workbench.browser.sendElementsToChat.attachImages": false
 }

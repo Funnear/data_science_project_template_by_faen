@@ -16,7 +16,7 @@
   "python.testing.unittestEnabled": false,
 
   // --- Import resolution for damn_ape (mirrors PYTHONPATH=src) ---
-  "python.analysis.extraPaths": ["src"],
+  "python.analysis.extraPaths": ["src", "libs/data_ravers_utils"],
 
   // --- Jupyter ---
   "jupyter.notebookFileRoot": "${workspaceFolder}",

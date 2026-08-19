@@ -166,7 +166,7 @@ if python -c "import ipykernel" >/dev/null 2>&1; then
   log_info "Registering Jupyter kernel 'python3 (venv)'"
   python -m ipykernel install --user \
     --name=venv \
-    --display-name "python3 (venv)"
+    --display-name "python3 for Jupyter (venv)"
 else
   log_warn "ipykernel not installed; skipping kernel registration."
 fi

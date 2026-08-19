@@ -72,6 +72,18 @@ logger.critical("Fatal error in %s: %s", subsystem, exc)
 logger.critical("Unrecoverable failure, shutting down")
 ```
 
+### In Jupyter notebook reduce output when building plots
+
+```python
+# downgrade logging level
+logging.getLogger().setLevel(logging.ERROR)
+
+# code that builds plots is here
+
+# reset logging level
+logging.getLogger().setLevel(logging.DEBUG)
+```
+
 ### to run apps in debug mode
 
 ```bash
@@ -85,7 +97,7 @@ python -m damn_ape.app.sandbox.demo_cli
 
 ```python
 import logging
-logger = logging.getLogger("damn_ape.infra.llm")
+logger = logging.getLogger("project_src_dir.subdir.subdir")
 ```
 
 ## Error Handling Pattern

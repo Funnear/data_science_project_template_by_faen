@@ -65,16 +65,22 @@ Placeholder for slide decks / demo material. Empty in the template.
 | [tests/](../tests/) | Test suite (pytest). |
 | [config/](../config/) | Runtime config, e.g. [logging.yaml](../config/logging.yaml). |
 | [notebooks/](../notebooks/) | Jupyter notebooks. |
+| [docs/](./) | Project documentation, development guides, and diagrams. |
 | [tools/git_hooks/](../tools/git_hooks/) | Git hook scripts installed by setup. |
 | [tools/python_scripts/](../tools/python_scripts/) | Standalone Python utility scripts. |
 | [tools/shell_scripts/](../tools/shell_scripts/) | Dev tooling: setup, env reset, test runner, diagram generation. |
 | [libs/](../libs/) | Git submodules (internal libraries), see [submodules.md](12_development/submodules.md). |
+| [.vscode/](../.vscode/) | Shared VS Code workspace configuration. |
 | [Makefile](../Makefile) | `make <target>` entry points, see [use_make.md](11_maintenance/use_make.md). |
 | [requirements.txt](../requirements.txt) | Python dependencies. |
 | [pytest.ini](../pytest.ini) | Pytest markers and config. |
 | [package.json](../package.json) | Node dev tooling (markdownlint-cli). |
+| [package-lock.json](../package-lock.json) | Locked Node dependency versions. |
 | [.gitmodules](../.gitmodules) | Registered git submodules. |
+| [.gitignore](../.gitignore) | Files and directories excluded from Git tracking. |
 | [.markdownlint.json](../.markdownlint.json) | Markdown lint rules. |
+| [CITATION.cff](../CITATION.cff) | Machine-readable project citation metadata. |
+| [DCO.text](../DCO.text) | Developer Certificate of Origin used for contribution sign-off. |
 | [LICENSE](../LICENSE) | Apache License 2.0. |
 
 ## Keeping This README Updated

@@ -79,8 +79,8 @@ node --version; npm --version
 [macOS, linux, Windows (Git Bash)]
 
 ```bash
-git clone https://github.com/Funnear/agies.git; \
-cd agies
+git clone https://github.com/ORG/PROJECT_NAME.git; \
+cd PROJECT_NAME
 ```
 
 ## Run the developer setup script

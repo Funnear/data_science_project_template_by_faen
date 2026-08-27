@@ -19,55 +19,6 @@ Useful for project templates.
 find . -type d -empty -exec touch {}/.gitkeep \;
 ```
 
-## Sync fixes from the project template into the project
-
-Repositories created from a GitHub template do not retain an upstream relationship with the
-template. Add the template repository as a separate remote while keeping the project repository
-as `origin`.
-
-Run once per project.
-
-[macOS, Linux]
-
-```bash
-git remote add template git@github.com:Funnear/data_science_project_template_by_faen.git ; \
-git remote -v
-```
-
-When the template contains a fix that should be propagated, fetch the template and identify the
-commit containing the required fix.
-
-[macOS, Linux]
-
-```bash
-git fetch template ; \
-git log --oneline template/main
-```
-
-Apply the selected commit and push it to the project repository.
-
-[macOS, Linux]
-
-```bash
-git cherry-pick <COMMIT_HASH> ; \
-git push
-```
-
-Keep template fixes in small, atomic commits so projects can cherry-pick only applicable changes.
-Prefer cherry-picking individual fixes over merging `template/main`, because projects created from
-a GitHub template have independent Git histories and may contain project-specific modifications.
-
-If commit signing is enabled, verify that the new cherry-picked commit is signed.
-
-[macOS, Linux]
-
-```bash
-git cat-file commit HEAD
-```
-
-The commit object should contain a `gpgsig` field. If DCO is required, also verify that the commit
-message contains the appropriate `Signed-off-by:` trailer.
-
 ## List added, deleted, and modified files
 
 Use `--name-status` without filtering to list all changed files and their status relative to
